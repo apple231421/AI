@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Academy 관리자 대시보드</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f6f7fb;
+            margin: 0;
+            padding: 0;
+        }
+        .dashboard-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 2.5rem 2rem;
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg,#667eea,#764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-decoration: none;
+        }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            min-width: 700px;
+        }
+        th, td {
+            padding: 0.9rem 0.6rem;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+            font-size: 1rem;
+        }
+        th {
+            background: #f3f3f3;
+            color: #333;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        /* 수정 모달 반응형 */
+        #editModal form {
+            width: 100%;
+            max-width: 400px;
+        }
+        @media (max-width: 900px) {
+            .dashboard-container {
+                padding: 1.2rem 0.5rem;
+            }
+            table {
+                min-width: 600px;
+            }
+        }
+        @media (max-width: 600px) {
+            .dashboard-container {
+                padding: 0.5rem 0.2rem;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+            .back-btn {
+                font-size: 0.95rem;
+                padding: 0.5rem 1rem;
+            }
+            table {
+                min-width: 500px;
+                font-size: 0.95rem;
+            }
+            th, td {
+                padding: 0.6rem 0.3rem;
+                font-size: 0.95rem;
+            }
+            #editModal form {
+                max-width: 95vw;
+                padding: 1.2rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <a href="index.html" class="back-btn">← 메인으로</a>
+        <h1>수강신청 대시보드</h1>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>이름</th>
+                        <th>이메일</th>
+                        <th>휴대폰</th>
+                        <th>신청동기</th>
+                        <th>신청일시</th>
+                        <th>수정</th>
+                        <th>삭제</th>
+                    </tr>
+                </thead>
+                <tbody id="dashboardTableBody">
+                    <tr><td colspan="7" style="text-align:center; color:#aaa;">로딩 중...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- 수정 모달 -->
+    <div id="editModal" style="display:none; position:fixed; z-index:4000; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+        <form id="editForm" style="background:white; padding:2.5rem 2rem; border-radius:18px; min-width:320px; max-width:90vw; box-shadow:0 8px 32px rgba(0,0,0,0.2); display:flex; flex-direction:column; gap:1.2rem; position:relative;">
+            <h2 style="margin-bottom:0.5rem; color:#667eea; text-align:center;">신청정보 수정</h2>
+            <input type="hidden" id="editKey" name="editKey">
+            <label for="editName" style="font-weight:500;">이름</label>
+            <input id="editName" name="editName" type="text" required style="padding:0.7rem; border-radius:8px; border:1px solid #ccc;">
+            <label for="editEmail" style="font-weight:500;">이메일</label>
+            <input id="editEmail" name="editEmail" type="email" required style="padding:0.7rem; border-radius:8px; border:1px solid #ccc;">
+            <label for="editPhone" style="font-weight:500;">휴대폰</label>
+            <input id="editPhone" name="editPhone" type="text" required placeholder="010-1234-5678" style="padding:0.7rem; border-radius:8px; border:1px solid #ccc;">
+            <label for="editReason" style="font-weight:500;">신청동기</label>
+            <textarea id="editReason" name="editReason" required rows="3" style="padding:0.7rem; border-radius:8px; border:1px solid #ccc;"></textarea>
+            <div style="display:flex; gap:1rem; margin-top:1.2rem; justify-content:center;">
+                <button type="submit" style="background:linear-gradient(45deg,#667eea,#764ba2); color:white; border:none; border-radius:8px; padding:0.7rem 2.2rem; font-size:1.1rem; font-weight:600; cursor:pointer;">저장</button>
+                <button id="editCancelBtn" style="background:#eee; color:#333; border:none; border-radius:8px; padding:0.7rem 2.2rem; font-size:1.1rem; font-weight:500; cursor:pointer;">취소</button>
+            </div>
+        </form>
+    </div>
+    <script type="module" src="./admin.js"></script>
+</body>
+</html>

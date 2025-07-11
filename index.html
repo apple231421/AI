@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 강의 사이트 - 미래를 선도하는 AI 교육</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Course Preview */
+        .course-preview {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .course-preview h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-card p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .enroll-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 25px;
+            border: 2px solid white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .enroll-button:hover {
+            background: white;
+            color: #f5576c;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero, .feature-card, .course-card {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">AI Academy</div>
+            <ul class="nav-links">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#courses">강의</a></li>
+                <li><a href="#about">소개</a></li>
+                <li><a href="#contact">문의</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>미래를 선도하는 AI 교육</h1>
+            <p>최신 AI 기술을 배우고 실무에 바로 적용할 수 있는 실전 중심의 강의를 제공합니다.
+               머신러닝부터 딥러닝까지, AI의 모든 것을 배워보세요.</p>
+            <a href="#enroll" class="cta-button">지금 신청하기</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="about">
+        <div class="container">
+            <h2>왜 AI Academy를 선택해야 할까요?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>실전 중심 교육</h3>
+                    <p>이론만이 아닌 실제 프로젝트를 통해 실무에서 바로 활용할 수 있는 실력을 키웁니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3>전문 강사진</h3>
+                    <p>AI 업계 최고의 전문가들이 직접 강의하며, 최신 트렌드와 기술을 전달합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>온라인 학습</h3>
+                    <p>언제 어디서나 학습할 수 있는 온라인 플랫폼으로, 자유로운 학습 환경을 제공합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>커뮤니티</h3>
+                    <p>동료들과 함께 성장할 수 있는 활발한 커뮤니티를 통해 네트워킹 기회를 제공합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>취업 지원</h3>
+                    <p>AI 관련 기업들과의 파트너십을 통해 우수한 수강생들에게 취업 기회를 제공합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>수료증 발급</h3>
+                    <p>과정 완료 시 공인된 수료증을 발급하여 이력서에 기재할 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Preview -->
+    <section class="course-preview" id="courses">
+        <div class="container">
+            <h2>인기 강의</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <h3>Python 기초부터 AI까지</h3>
+                    <p>Python 프로그래밍 기초부터 머신러닝, 딥러닝까지 체계적으로 학습합니다.</p>
+                    <a href="#enroll" class="enroll-button">신청하기</a>
+                </div>
+                <div class="course-card">
+                    <h3>딥러닝 마스터 클래스</h3>
+                    <p>CNN, RNN, Transformer 등 최신 딥러닝 모델을 실습을 통해 마스터합니다.</p>
+                    <a href="#enroll" class="enroll-button">신청하기</a>
+                </div>
+                <div class="course-card">
+                    <h3>AI 프로젝트 실전</h3>
+                    <p>실제 AI 프로젝트를 진행하며 포트폴리오를 구축하고 실무 경험을 쌓습니다.</p>
+                    <a href="#enroll" class="enroll-button">신청하기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment Section -->
+    <section id="enroll" style="padding: 80px 0; background: white; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: #333;">지금 바로 시작하세요!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 3rem; color: #666; max-width: 600px; margin-left: auto; margin-right: auto;">
+                AI의 미래를 함께 만들어갈 여러분을 기다립니다.
+                지금 신청하고 특별 할인 혜택을 받아보세요!
+            </p>
+            <a href="#" class="cta-button" style="font-size: 1.3rem; padding: 18px 50px;">
+                🚀 지금 신청하기
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 AI Academy. All rights reserved.</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">
+                📧 contact@aiacademy.com | 📞 02-1234-5678
+            </p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { saveApplication } from './firebase-app.js';
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add scroll effect to header
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                }
+            });
+
+            // 팝업(모달) 관련 스크립트
+            function openModal() {
+                document.getElementById('enrollModal').style.display = 'flex';
+            }
+            function closeModal() {
+                document.getElementById('enrollModal').style.display = 'none';
+            }
+            // 모든 신청하기 버튼에 팝업 연결
+            document.querySelectorAll('.cta-button, .enroll-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openModal();
+                });
+            });
+            // 모달 바깥 클릭 시 닫기
+            window.addEventListener('click', function(e) {
+                const modal = document.getElementById('enrollModal');
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            // 폼 제출 처리
+            document.getElementById('enrollForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                // 간단한 유효성 검사
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const reason = document.getElementById('reason').value.trim();
+                if (!name || !email || !phone || !reason) {
+                    alert('모든 항목을 입력해주세요.');
+                    return;
+                }
+                if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+                    alert('올바른 이메일 형식을 입력해주세요.');
+                    return;
+                }
+                if (!/^\d{2,3}[- ]?\d{3,4}[- ]?\d{4}$/.test(phone)) {
+                    alert('올바른 휴대폰 번호를 입력해주세요.');
+                    return;
+                }
+                // Firebase에 저장
+                try {
+                    await saveApplication({ name, email, phone, reason, createdAt: new Date().toISOString() });
+                    alert('수강신청이 완료되었습니다! 감사합니다.');
+                    closeModal();
+                    this.reset();
+                } catch (err) {
+                    alert('저장 중 오류가 발생했습니다.');
+                }
+            });
+            // 취소 버튼
+            document.getElementById('cancelBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                closeModal();
+            });
+
+            // 관리자 버튼 클릭 시 admin.html로 이동
+            document.getElementById('adminBtn').addEventListener('click', function() {
+                window.location.href = 'admin.html';
+            });
+        });
+    </script>
+
+    <!-- 관리자 버튼 -->
+    <button id="adminBtn" style="position:fixed; top:18px; right:32px; z-index:1200; background:linear-gradient(45deg,#667eea,#764ba2); color:white; border:none; border-radius:8px; padding:0.6rem 1.5rem; font-size:1rem; font-weight:600; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.08);">관리자</button>
+    <!-- 수강신청 모달 -->
+    <div id="enrollModal" style="display:none; position:fixed; z-index:2000; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+        <form id="enrollForm" style="background:white; padding:2.5rem 2rem; border-radius:18px; min-width:320px; max-width:90vw; box-shadow:0 8px 32px rgba(0,0,0,0.2); display:flex; flex-direction:column; gap:1.2rem; position:relative;">
+            <h2 style="margin-bottom:0.5rem; color:#667eea; text-align:center;">수강신청</h2>
+            <label for="name" style="font-weight:500;">이름</label>
+            <input id="name" name="name" type="text" required style="padding:0.7rem; border-radius:8px; border:1px solid #ccc;">
+            <label for="email" style="font-weight:500;">이메일</label>
+            <input id="email" name="email" type="email" required style="padding:0.7rem; border-radius:8px; border:1px solid #ccc;">
+            <label for="phone" style="font-weight:500;">휴대폰</label>
+            <input id="phone" name="phone" type="text" required placeholder="010-1234-5678" style="padding:0.7rem; border-radius:8px; border:1px solid #ccc;">
+            <label for="reason" style="font-weight:500;">신청동기</label>
+            <textarea id="reason" name="reason" required rows="3" style="padding:0.7rem; border-radius:8px; border:1px solid #ccc;"></textarea>
+            <div style="display:flex; gap:1rem; margin-top:1.2rem; justify-content:center;">
+                <button type="submit" style="background:linear-gradient(45deg,#ff6b6b,#ee5a24); color:white; border:none; border-radius:8px; padding:0.7rem 2.2rem; font-size:1.1rem; font-weight:600; cursor:pointer;">제출</button>
+                <button id="cancelBtn" style="background:#eee; color:#333; border:none; border-radius:8px; padding:0.7rem 2.2rem; font-size:1.1rem; font-weight:500; cursor:pointer;">취소</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
